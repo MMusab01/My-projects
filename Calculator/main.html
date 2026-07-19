@@ -5,141 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            column-gap: 50px;
-        }
-
-        .calculator {
-            display: flex;
-            border-radius: 27px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 540px;
-            width: 343px;
-            background-color: rgb(213, 213, 213);
-        }
-
-        .display {
-            margin: 10px;
-            height: 10%;
-            width: 304px;
-            border-radius: 16px;
-            font-size: 30px;
-            text-align: right;
-        }
-
-        .btn {
-            height: 70px;
-            width: 70px;
-            border-radius: 20%;
-            cursor: pointer;
-        }
-
-        .keypad {
-
-            height: 434px;
-            width: 304px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: space-between;
-        }
-
-        .btn-clear {
-            grid-column: 3 / 4;
-            background-color: rgb(255, 92, 92);
-        }
-
-        .btn-equals {
-            grid-column: 4 / 5;
-            background-color: rgb(150, 255, 150);
-        }
-        .history {
-            display: flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            align-items: center;
-            height: 540px;
-            width: 343px;
-            background-color: rgb(213, 213, 213);
-            border-radius: 27px;
-        }
-        .list{
-            text-align: center;
-            font-size: 20px;
-            padding: 10px;
-            height: 80%;
-            width: 90%;
-            background-color: rgb(255, 255, 255);
-            border-radius: 27px;
-            margin-top: 10px;
-            overflow-y: auto;
-        }
-        .clear-history{
-            margin-top: 10px;
-            height: 10%;
-            width: 90%;
-            border-radius: 27px;
-            background-color: rgb(255, 92, 92);
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <main>
         <div class="container">
             <div class="calculator">
+                <div class="head">
+                    &#9776;
+                    <h2>
+                        Standard
+                    </h2>
+                    <img class="icon" src="icon.png" alt="">
+                </div>
                 <input id="display" class="display" readonly>
+
+
+                <div class="div-small">
+                    <button class="top-btns unactive">MC</button>
+                    <button class="top-btns unactive">MR</button>
+                    <button class="top-btns">M+</button>
+                    <button class="top-btns">M-</button>
+                    <button class="top-btns">MS</button>
+                </div>
+
                 <div class="keypad">
 
-                    <button onclick="fraction()" class="btn btn-1">1/x</button>
-                    <button onclick="sqr()" class="btn btn-sqr">x<sup>2</sup></button>
-                    <button onclick="sqrt()" class="btn btn-sqrt"><sup>2</sup>&radic;x</button>
-                    <button onclick="append('%')" class="btn btn-mod">%</button>
 
-                    <button onclick="append('7')" class="btn btn-7">7</button>
-                    <button onclick="append('8')" class="btn btn-8">8</button>
-                    <button onclick="append('9')" class="btn btn-9">9</button>
-                    <button onclick="append('*')" class="btn btn-multi">x</button>
 
-                    <button onclick="append('4')" class="btn btn-4">4</button>
-                    <button onclick="append('5')" class="btn btn-5">5</button>
-                    <button onclick="append('6')" class="btn btn-6">6</button>
-                    <button onclick="append('+')" class="btn btn-add">+</button>
+                    <button onclick="append('%')" class="btn btn-op btn-mod">%</button>
+                    <button class="btn btn-op btn-CE">CE</button>
+                    <button class="btn btn-op btn-clear" id="btn-clear">C</button>
+                    <button onclick="del()" class="btn btn-op btn-del">&#x232B;</button>
 
-                    <button onclick="append('1')" class="btn btn-1">1</button>
-                    <button onclick="append('2')" class="btn btn-2">2</button>
-                    <button onclick="append('3')" class="btn btn-3">3</button>
-                    <button onclick="append('-')" class="btn btn-subtract">-</button>
 
-                    <button onclick="append('.')" class="btn btn-dot">.</button>
-                    <button onclick="append('0')" class="btn btn-0">0</button>
-                    <button onclick="del()" class="btn btn-del">DEL</button>
-                    <button onclick="append('/') " class="btn btn-divide">/</button>
+                    <button onclick="fraction()" class="btn btn-op btn-1">1/x</button>
+                    <button onclick="sqr()" class="btn btn-op btn-sqr">x<sup>2</sup></button>
+                    <button onclick="sqrt()" class="btn btn-op btn-sqrt"><sup>2</sup>&radic;x</button>
+                    <button onclick="append('/') " class="btn btn-op btn-divide">/</button>
 
-                    <button onclick="clear()" class="btn btn-clear">C</button>
+
+                    <button onclick="append('7')" class="btn btn-num btn-7">7</button>
+                    <button onclick="append('8')" class="btn btn-num btn-8">8</button>
+                    <button onclick="append('9')" class="btn btn-num btn-9">9</button>
+                    <button onclick="append('*')" class="btn btn-op btn-multi">x</button>
+
+                    <button onclick="append('4')" class="btn btn-num btn-4">4</button>
+                    <button onclick="append('5')" class="btn btn-num btn-5">5</button>
+                    <button onclick="append('6')" class="btn btn-num btn-6">6</button>
+                    <button onclick="append('-')" class="btn btn-op btn-subtract">-</button>
+                    
+                    <button onclick="append('1')" class="btn btn-num btn-1">1</button>
+                    <button onclick="append('2')" class="btn btn-num btn-2">2</button>
+                    <button onclick="append('3')" class="btn btn-num btn-3">3</button>
+                    <button onclick="append('+')" class="btn btn-op btn-add">+</button>
+
+                    <button class="btn btn-num btn-toggle-sign">+/-</button>
+                    <button onclick="append('0')" class="btn btn-num btn-0">0</button>
+                    <button onclick="append('.')" class="btn btn-num btn-dot">.</button>
                     <button onclick="calculate()" class="btn btn-equals">=</button>
+
                 </div>
 
             </div>
             <div class="history">
-                <h2>History</h2>
+                <!-- <h2>History</h2>
                 <div class="list" id="list">
                     <ul id="items"></ul>
                 </div>
-                <button onclick="clearHistory()" class="clear-history">Clear History</button>
+                <button onclick="clearHistory()" class="clear-history">Clear History</button> -->
+            
+                <div class="tabs">
+                    <button class="tab active-tab" onclick="switchTab('tab1',this)">History</button>
+                    <button class="tab" onclick="switchTab('tab2' , this)">Memory</button>
+                </div>
+
+
+                <div class="tab-contents">
+
+                    <div id="tab1" class="tab-content active-content">
+                        <div class="list" id="list">
+                            <ul id="items"></ul>
+                        </div>
+                    </div>
+
+                    <div id="tab2" class="tab-content hidden">
+                        <p>There is no memory yet.</p>
+                    </div>
+                </div>
+
+
+
+                    
             </div>
         </div>
         <script src="script.js"></script>
